@@ -1,0 +1,16 @@
+{
+    "contents" : "## A pair of functions that cache the inverse of a matrix\n## Creates a special matrix object that can cache its inverse\nmakeCacheMatrix <- function( m = matrix() ) {\n  ## Initialize the inverse property\n  i <- NULL\n  ## Method to set the matrix\n  set <- function( matrix ) {\n    m <<- matrix\n    i <<- NULL\n  }\n  ## Method the get the matrix\n  get <- function() {\n    ## Return the matrix\n    m\n  }\n  ## Method to set the inverse of the matrix\n  setInverse <- function(inverse) {\n    i <<- inverse\n  }\n  ## Method to get the inverse of the matrix\n  getInverse <- function() {\n    ## Return the inverse property\n    i\n  }\n  ## Return a list of the methods\n  list(set = set, get = get,\n       setInverse = setInverse,\n       getInverse = getInverse)\n}\n## Compute the inverse of the special matrix returned by \"makeCacheMatrix\"\n## above. If the inverse has already been calculated (and the matrix has not\n## changed), then the \"cachesolve\" should retrieve the inverse from the cache.\ncacheSolve <- function(x, ...) {\n  ## Return a matrix that is the inverse of 'x'\n  m <- x$getInverse()\n  ## Just return the inverse if its already set\n  if( !is.null(m) ) {\n    message(\"getting cached data\")\n    return(m)\n  }\n  ## Get the matrix from our object\n  data <- x$get()\n  ## Calculate the inverse using matrix multiplication\n  m <- solve(data) %*% data\n  ## Set the inverse to the object\n  x$setInverse(m)\n  ## Return the matrix\n  m\n}",
+    "created" : 1408892106079.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "820068558",
+    "id" : "4CA7FC2C",
+    "lastKnownWriteTime" : 1408892174,
+    "path" : "~/GitHub/ProgrammingAssignment2/cachematrix.R",
+    "project_path" : "cachematrix.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
